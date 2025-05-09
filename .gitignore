@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.venv/
+ENV/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE / Editor specific
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Temporary files from our script (if any were to be made outside temp_dir)
+*_completed.docx
+*_completed.xlsx
+*_conversion_error.txt
+# test_pandoc_output.docx # We can decide if we want to commit this test output 

@@ -1,0 +1,1262 @@
+Tortus AI Ltd Data Protection Impact Assessment (DPIA) 
+DOCUMENT CONTROL 
+VERSION 
+CHANGES 
+AUTHOR 
+DATE
+1.0 
+Initial Version 
+8foldGovernance 
+06/09/2024
+2.0 
+Addition of web-based application, Open AI and updated data flow diagram
+8foldGovernance 
+26/11/2024
+3.0 
+Penetration Test results led to changes to the risk tables
+8foldGovernance 
+13/12/2024
+4.0 
+Penetration Test results led to changes to the risk tables
+8foldGovernance 
+02/01/2025
+5.0 
+Addition of MFA and Medical Device Classification
+8foldGovernance 
+08/01/2025
+6.0 
+Amendment of audio storage, addition of epic integration, removal of google vertex as sub-processor, addition of Auth0, LaunchDarkly, DataDog and amended data flow diagram. Changes in blue.
+Nikita Adatia/ 
+8foldGovernance
+13/02/2025
+7.0 
+Removal of AWS. 
+Nikita Adatia 
+14/04/2025
+
+
+
+REVIEW AND APPROVAL 
+
+
+VERSION 
+NAME 
+SIGNATURE 
+DATE
+Author: 
+V7.0
+Nikita Adatia (Tortus Regulatory Affairs Lead)
+NA 
+14/04/2025
+Reviewed 
+by:
+V7.0 
+8foldGovernance (Hugh Collard) 
+HC
+14/04/2025
+Reviewed 
+by:
+V7.0 
+8foldGovernance (Georgina) 
+GD
+14/04/2025
+
+
+
+
+Approved for 
+publication by: 
+14/04/2025
+V7.0Nikita Adatia (Tortus Regulatory Affairs 
+Lead)NA 
+
+Page 1 of 36
+
+
+Data Protection Impact Assessment Template 
+Tortus App Data Protection Impact Assessment (DPIA) Tortus AI 
+This DPIA is based on the template issued by the Information Commissioner’s Office (ICO). 
+This DPIA has been carried out at the start of this major project involving the use of personal data as it has the potential to result in significant changes to existing processes. The final outcomes will be integrated back into the project plan. 
+It is the responsibility of the data controller to ensure a DPIA is carried out. A data processor can assist in the completion of a DPIA where it is responsible for the relevant processing operation, but the controller remains responsible for the DPIA. This DPIA has therefore been designed to assist data controllers with their requirements relating to the completion of a DPIA. 
+Controller details
+
+
+
+Name of controller
+
+
+Subject/title of DPIA 
+TORTUS
+Name of controller contact/DPO (delete as appropriate)
+
+
+
+
+
+Processor details
+
+
+
+Name of Processor 
+Tortus AI Ltd
+Subject/title of DPIA 
+TORTUS
+Name of processor contact/DPO (delete as appropriate)
+Processor contact: Nikita Adatia, Regulatory Lead Affairs (nikita@tortus.ai) DPO: 8foldGovernance Ltd
+
+
+
+Page 2 of 36
+
+Step 1: Identify the need for a DPIA
+
+
+
+Explain broadly what the project aims to achieve and what type of processing it involves. You may find it helpful to refer or link to other documents, such as a project proposal. Summarise why you identified the need for a DPIA.
+Tortus is a desktop and web-based application that is used to transcribe clinical consultations and summarise the transcripts into clinical notes and letters. Clinicians can access the Tortus app on devices with in-built or connected microphones. Tortus AI Ltd is registered with the Medicines Healthcare Products Regulatory Agency (MHRA) as a manufacturer of medical devices. The Tortus app is classified as a Class I (Safety Classification A) medical device as per the UK Medical Devices Regulation (MDR). 
+The key features of the Tortus app are: 
+● Speech to Text: The Tortus app transcribes the clinical consultation in bulk and produces a transcript for the clinician to review. 
+● Text Summarisation: The Tortus app restructures the data from the transcript into a template medical summary, following a specific format e.g. a Subjective, Objective, Assessment, and Plan (SOAP) note. The output is a summary medical history note for the patient. 
+● Letter Generation: The Tortus app uses the data from the summarisation and produces a letter from a set template, to be checked by the clinician. 
+The Tortus app is currently only intended for use by clinicians and health professionals during outpatient hospital clinical consultations and primary care settings. Clinicians are expected to check the accuracy and completeness of: 
+● Transcriptions 
+● Summarisations 
+● Letters 
+Data controllers are responsible for undertaking Data Protection Impact Assessments (DPIAs). Data processors (such as Tortus AI Ltd) are required to provide assistance to data controllers when they are completing DPIAs. This ensures that the processing activities for which the processor is responsible, particularly technical matters where the data processor has specific knowledge and expertise, are fully and clearly understood. This DPIA has therefore been produced to assist data controllers in completing a DPIA for the implementation of the Tortus app. It contains all of the information a data controller should require in order to complete their own DPIA, or data controllers may wish to adopt this DPIA as their own. 
+In determining whether a DPIA was a mandatory requirement or simply a recommended activity, two key sets of guidance were considered: 
+1. The ‘Guidelines on Data Protection Impact Assessment (DPIA) and determining whether processing is “likely to result in a high risk” for the purposes of
+
+
+
+Page 3 of 36
+
+Regulation 2016/679’; and 
+2. The Information Commissioner’s Office (ICO) guidance on when to conduct a DPIA 
+The table in Appendix 1 sets out the criteria and associated assessment which informed the decision to complete a DPIA. We identified the need for a DPIA because the implementation of the Tortus app involves high-risk processing of personal data and special category data. 
+This DPIA ensures we assess and mitigate potential risks associated with the data processing involved with the use of the Tortus app, ensuring compliance with data protection regulations and safeguarding the privacy and security of patient data. The DPIA is also required to identify any problems and resolve them before installation and population of the Tortus app.
+
+
+
+Step 2: Describe the processing
+
+
+
+Describe the nature of the processing: how will you collect, use, store and delete data? What is the source of the data? Will you be sharing data with anyone? You might find it useful to refer to a flow diagram or other way of describing data flows. What types of processing identified as likely high-risk are involved?
+All data processed within the Tortus app, including any sharing of data, is determined by the data controller. The Tortus app is available via a desktop application which is installed on the end user's computer and a web-based application which is available via a compatible browser. The data processed within the Tortus app is an audio recording initiated by the clinician, with all audio then captured during the clinical consultation. Recordings can be initiated, paused and stopped by the clinician and the Tortus app provides visual feedback to users to indicate when the recording is active. 
+Information will be primarily sourced from the conversation between clinicians and patients during consultations, which may be informed by information sourced from local PAS/EPR/EHR, paper records or other clinical and operational systems accessed by the clinician during a consultation. Data Controllers determine the specific purposes for which the Tortus app will be used and the purposes for which the audio recordings and resulting transcriptions and summaries are used and this may vary from customer to customer depending on their requirements. 
+All access to and use of the Tortus app is determined by the customer (the data controller). An overview of the task outputs and inputs associated with the Tortus app is given below.
+
+
+
+Page 4 of 36
+
+Transcription 
+
+
+● The Tortus app listens to the patient-doctor consultation and records audio to a local file on the clinician’s computer 
+● The recording is sent over HTTPS to the Tortus app API hosted on Google Cloud Platform (GCP), secured by an API gateway with authentication, to a private dedicated Speech to Text model (hosted on GCP cloud). 
+● The transcription is returned to the Tortus app. 
+Summarisation/Letter writing 
+● The transcript is sent over a secure connection via the Tortus app API to Open AI, to create a summarisation (e.g. a medical note) or letter. 
+● The summarisation is then returned to the Tortus app. 
+● The clinician verifies the content of the summarisation/letter and edits as required. 
+● The summarisation/letter can then be copied and pasted as a medical note into other relevant systems utilised by the clinician as part of existing workflows (e.g. the PAS/EPR/EHR), email system, etc. 
+● Audio data is processed as follows: during recording, it is temporarily stored in memory and sent securely via HTTPS to the server for transcription. Once transcription is complete, audio is removed from server memory. The encrypted audio is stored in the user’s browser storage (IndexedDB) for up to 24 hours, after which it is automatically deleted or deleted when the user logs out. 
+● The transcript, notes, and letters are processed securely via HTTPS and are not stored on Tortus servers or databases. These artefacts are encrypted with user-specific keys and stored temporarily in the browser’s domain-scoped local storage for up to 24 hours, after which they are automatically deleted or removed upon user logout. No sensitive data is retained on the server, database, or file system. 
+Meta Data 
+● The data processor (Tortus AI Ltd) uses anonymous data for quality assurance and audit purposes - anonymised user interactions (e.g. the number of transcriptions/summarisations/letters, etc.). This anonymous data is stored securely in the Google Cloud Platform managed by Tortus AI Ltd. 
+Dataflows 
+The Tortus app has a simple data flow diagram shown on the next page. Simple data flow diagram for Tortus app 
+Page 5 of 36
+
+
+For EPIC integration: 
+In addition to the above diagram, please refer to the below for users specifically with EPIC integration:
+
+
+
+Page 6 of 36
+
+Data flow: 
+1. Initiation: 
+
+
+○ A clinician starts the process by clicking the TORTUS button from within the Epic interface. This action launches the TORTUS application. 
+2. User Authentication: 
+○ TORTUS communicates with Epic for authentication using the Google Cloud Platform (GCP), leveraging Single Sign-On (SSO). This ensures that only authorised users can access the system. 
+3. Patient Data Context: 
+○ Epic sends essential patient demographics (such as first name, last name, and date of birth) to TORTUS via the FHIR API. This provides the necessary context for the consultation. 
+4. Consultation Audio Recording: 
+○ TORTUS records the audio of the consultation in real-time. 
+5. Audio Transcription: 
+○ The recorded audio is sent to TORTUS’s speech-to-text models hosted on GCP, where it is transcribed into text. 
+6. Clinical Note Generation: 
+○ The transcript is then sent to TORTUS’s language models, which create a structured clinical note. 
+7. Clinician Review and Edit: 
+Page 7 of 36
+
+○ The clinician reviews the generated note within the TORTUS desktop app. The clinician can make edits and finalise the content. 
+8. Write-back to Epic: 
+○ Once approved by the clinician, the note is sent back through TORTUS’s API. This triggers an Epic API request to write the note into the patient’s record within Epic. 
+9. Confirmation in Epic: 
+The note appears as a draft in the patient’s record within Epic. The clinician has to confirm the note for it to be finalised within the Epic EHR system.
+
+
+
+Describe the scope of the processing: what is the nature of the data, and does it include special category or criminal offence data? How much data will you be collecting and using? How often? How long will you keep it? How many individuals are affected? What geographical area does it cover?
+All data processed within the Tortus app is sourced directly from conversations between clinicians and patients during consultations. The content of those conversations will be determined by the clinician and patient and the circumstances in which the Tortus app is used will be determined by the customer as the data controller. This will vary from customer to customer depending on their requirements. This is however expected to include the following personal data items: 
+Patients, families and carers: 
+Personal data 
+● Names 
+● Addresses 
+● Dates of birth 
+● Telephone Numbers 
+● Email addresses 
+● NHS Numbers 
+Special categories of personal data 
+● Health data 
+Data which are subject to a common law duty of confidentiality 
+● Health data 
+Healthcare professionals involved in the patient’s care: 
+Personal data 
+● Names 
+● Job titles and speciality
+
+
+
+Page 8 of 36
+
+● Email address ● Organisation 
+
+
+Conversations which are captured, transcribed and summarised will likely include personal data and special categories of personal data which are subject to a common law duty of confidentiality meaning the processing has the potential to be high risk. 
+Data processing is initiated by an end user therefore the volume of data to be processed will vary depending on the needs of the client and the scope of deployment. The categories of data subject in scope for the proposed processing are also determined by the data controller, however, it is anticipated that this could be those working for or on behalf of the data controller (e.g. staff) and individuals who are in contact with the data controller’s Services (e.g. patients, their families and carers). 
+It is expected that data controllers will require clinicians who utilise the Tortus app to ensure the summarisations and letters generated via the system are copied into the primary record for the relevant patient (e.g. held with the existing PAS/EPR/EHR). This 
+will ensure the data can be retained by the data controller in accordance with the Records Management Code of Practice for Health and Social Care and any local record-keeping/retention policies or procedures. The only data stored in the cloud as part of the transcription process relates to anonymised user interactions (e.g. the number of transcriptions/summarisations/letters, etc.). 
+Audio data is processed as follows: during recording, it is temporarily stored in memory and sent securely via HTTPS to the server for transcription. Once transcription is complete, audio is removed from server memory. The encrypted audio is stored in the user’s browser storage (IndexedDB) for up to 24 hours, after which it is automatically deleted or removed when the user logs out. 
+In addition to the data processed for clinical purposes, the Tortus app processes user data to facilitate access and feature testing. This includes storing the full name, email address, organisation, role and speciality of users via Auth0 for identification and authentication purposes. Additionally, LaunchDarkly is used to release features to specific groups of users for testing purposes, ensuring a controlled rollout of new functionality. Datadog is used for analytics and monitoring of usage and faults. 
+Please see details below: 
+1. Authentication with Auth0: 
+○ The user logs in through the TORTUS app. 
+○ User details such as full name, email, organisation, role, and speciality are sent to Auth0. 
+○ Auth0 processes the details for identification and authentication and returns an access token to the app. 
+2. Feature Testing with LaunchDarkly: 
+Page 9 of 36
+
+○ Once authenticated, the TORTUS app communicates with LaunchDarkly to check which features are enabled for the user. 
+○ LaunchDarkly determines feature flags based on user attributes (e.g., role, speciality) and returns the feature settings. 
+3. Analytics and Monitoring with Datadog: 
+○ The app sends anonymised usage data and fault logs to Datadog for monitoring and analytics. 
+○ Datadog processes the data to provide insights on usage patterns and system issues. 
+These data points are securely stored and managed in compliance with the relevant data protection legislation and regulations.
+
+
+
+Describe the context of the processing: what is the nature of your relationship with the individuals? How much control will they have? Would they expect you to use their data in this way? Do they include children or other vulnerable groups? Are there prior concerns over this type of processing or security flaws? Is it novel in any way? What is the current state of technology in this area? Are there any current issues of public concern that you should factor in? Are you signed up to any approved code of conduct or certification scheme (once any have been approved)?
+What is the nature of your relationship with the individuals? 
+Tortus AI Ltd’s role is to provide technology and accompanying services to allow customers to automate data processing, manipulation, and data consolidation in support of direct care. The Tortus app system provided by Tortus AI Ltd is designed to be used in a clinical outpatient setting. 
+Tortus AI Ltd customers will determine the purposes and means of the processing of personal data and will therefore act as the data controllers for all personal data processed via the Tortus app. It is anticipated that data controllers will have a direct relationship with data subjects whose data may be processed within the Tortus app (e.g. staff and service users). 
+Tortus AI Ltd operates as a data processor on behalf of its customers who will act as the data controllers for all data processed by Tortus AI Ltd. To ensure compliance with Article 28 of the UK GDPR a data processing contract will be established between Tortus AI Ltd and each data controller that utilises the Tortus app solution. 
+How much control will they have? Would they expect you to use their data in this way? Do they include children or other vulnerable groups? 
+Data controllers are advised to ensure they have reviewed any relevant Privacy Notices provided to data subjects whose data will be processed (e.g. staff and service users) as part of their adoption of the Tortus app solution to ensure that all intended data processing activities are suitably covered and that all processing of
+
+
+
+Page 10 of 36
+
+personal, special category, and confidential data will remain in line with the reasonable expectations of data subjects. It is anticipated that the Tortus app will primarily be used to improve and enhance existing data processing activities associated with the provision of direct care (i.e. the summarisation of consultations and the creation of letters), therefore suitable wording will likely already be in place within data controller Privacy Notices. 
+Users are advised to log out of the web app when not in use to prevent human-readable data from being visible on their screens. Data stored temporarily in the browser’s IndexedDB is encrypted with user-specific keys and is deleted automatically after 24 hours or upon logout. Organisations may also implement additional security measures, such as automatic logout after idle periods, to enhance user security 
+The use of the Tortus app may include the processing of personal data in relation to children (under 18 years old) or other vulnerable groups. 
+Are there prior concerns over this type of processing or security flaws? Is it novel in any way? What is the current state of technology in this area? Are there any current issues of public concern that you should factor in? 
+The Tortus app uses established technical tools, technology providers and mechanisms and has adopted best practices with respect to information security. 
+There are no known security flaws and this has been assessed via external penetration testing of the Tortus app system (both the desktop and web-based versions). The use of technology to support transcription and summarisation of audio is not novel and transcription software has been used within healthcare for many years. 
+There may be concerns around the use of AI in a healthcare setting and although the Tortus app is subject to rigorous testing and clinical safety reviews (via the DCB0129 standard) the accuracy and completeness of all transcriptions and summarisations should be reviewed by clinicians as part of standard operational processes when using the Tortus app.
+
+
+
+Describe the purposes of the processing: what do you want to achieve? What is the intended effect on individuals? What are the benefits of the processing – for you, and more broadly?
+The Tortus app is a digital platform designed to be used in a clinical outpatient setting. The Tortus app performs the task of documentation and composition of notation and letters clinicians would otherwise type in their role in delivering care. The purposes of processing are therefore likely to be the same as those already undertaken by healthcare providers - direct care.
+
+
+
+Page 11 of 36
+
+The Tortus app is intended to improve the efficiency and accuracy of existing tasks carried out by healthcare professionals. 
+The specific purposes of processing are to be determined by the data controllers, however, as stated above it is intended to be used to support direct patient care.
+
+
+
+Step 3: Consultation process
+
+
+
+Consider how to consult with relevant stakeholders: describe when and how you will seek individuals’ views – or justify why it’s not appropriate to do so. Who else do you need to involve within your organisation? Do you need to ask your processors to assist? Do you plan to consult information security experts, or any other experts?
+A detailed data protection review of the Tortus app has been conducted through this Data Protection Impact Assessment (DPIA). 
+The Tortus AI Ltd solution was designed and developed in-house utilising a combination of Tortus AI Ltd-owned and developed IP built by development professionals within Tortus AI Ltd. Tortus app builds on concepts and technology used in Tortus AI Ltd's Tortus app product which has been used and accepted in a range of healthcare settings including Great Ormond Street Hospital (GOSH). The solution itself was developed using a combination of development professionals and field technicians. The strategic design of the products was conceived by the Senior Technical and Board Management of Tortus AI Ltd. 
+Tortus AI Ltd has consulted internally with the DPO and independent data protection specialists (8foldGovernance Ltd.). 
+Tortus AI Ltd has consulted with NHS England (NHSE) when implementing products and services as part of national projects. 
+It is recommended that data controllers ensure they have undertaken appropriate stakeholder consultation as part of the implementation of the Tortus app and the resulting data processing activities.
+
+
+
+Step 4: Assess necessity and proportionality
+
+
+
+Describe compliance and proportionality measures, in particular: what is your lawful basis for processing? Does the processing actually achieve your purpose? Is there another way to achieve the same outcome? How will you prevent function creep? How will you ensure data quality and data minimisation? What information will you give individuals? 
+Page 12 of 36
+
+How will you help to support their rights? What measures do you take to ensure processors comply? How do you safeguard any international transfers?
+The necessity and proportionality of the approach are to be determined by the data controllers. The use of technology to support improvements and efficiencies in the delivery of healthcare services is however expected to be considered a legitimate, necessary and proportionate approach for healthcare providers to take. 
+NHS England explicitly supports: 
+1. Through its AI Lab the use of AI in health and care settings 
+2. Through its Transformation Directorate, the use of AI in health and care settings 
+The use of the Tortus app is considered to be capable of complying with the following data protection principles: 
+Personal data shall be processed lawfully, fairly and in a transparent manner in relation to the data subject (‘lawfulness, fairness and transparency’) 
+The lawful basis for processing will be determined by the data controllers and is outside the scope of this technical DPIA. Tortus AI Ltd will process data as a data processor on behalf of data controllers under a data processing agreement (DPA) to ensure compliance with Article 28 of the UK GDPR. 
+Data Controllers that provide NHS services are expected to rely on the following lawful bases under the UK GDPR to process data through the use of the Tortus app: 
+● To support the processing of data in support of the provision of NHS services, legal powers such as those provided within: 
+○ The National Health Service and Community Care Act 1990 
+○ The NHS Act 2006 
+○ The Health and Social Care Act 2012 
+● To support the processing of personal data and special categories of data in accordance with the UK GDPR: 
+○ Art. 6(1)(e) - Public task 
+○ Art. 9(2)(h) - healthcare purposes 
+Data Controllers that provide private healthcare services are expected to rely on the following lawful bases under the UK GDPR to process data within the Tortus app: 
+● To support the processing of personal data and special categories of data in accordance with the UK GDPR: 
+○ Art. 6(1)(b) - Contract 
+○ Art. 9(2)(h) - healthcare purposes 
+To support the processing of personal data in accordance with the Data Protection Act 2018 and the Common Law Duty of Confidentiality all Data Controllers that provide healthcare services are expected to rely on the following lawful bases to process data
+
+
+
+Page 13 of 36
+
+within the Tortus app: 
+
+
+● To support the processing of personal data in accordance with the Data Protection Act 2018: 
+○ Condition 2 of Schedule 1 - Health and Social Care Purposes. 
+● To support the processing of confidential information in accordance with the Common Law Duty of Confidentiality: 
+○ Implied consent 
+All data processors engaged by Tortus AI Ltd operate under data processing agreements which meet the requirements of the Data Protection Act 2018 (and UK GDPR). 
+Tortus AI Ltd utilises the following sub-processors in the delivery of the Tortus app: 
+Entity 
+Category 
+Due Diligence/Assurance
+Google Cloud 
+Platform (GCP)
+Software as a 
+Service (SaaS)
+ICO Registration: Z6647359 
+ISO27001 Certified 
+Cyber Essentials Plus Certified NHS DSPT: 8JE14 
+Privacy Notice: 
+https://policies.google.com/privacy Servers based in UK
+OpenAI 
+Auth0
+Software as a 
+Service (SaaS) 
+Software as a 
+Service (SaaS)
+ICO Registration: ZB625491 
+SOC2 and SOC3 certified 
+OpenAI has a Trust Center with comprehensive compliance 
+documentation highlighting our robust security practices. Please request access at OpenAI Security Portal 
+Privacy Notice: Privacy policy | OpenAI 
+Servers based in Ireland (EU) 
+ICO Registration: ZB324386 
+ISO27001 Certified 
+SOC2 Type 2 Compliance 
+Privacy Notice: Okta Privacy Policy
+
+
+
+Page 14 of 36
+
+
+
+
+
+Servers based in the EU
+Launchdarkly
+Software as a 
+Service (SaaS)
+ICO Registration: ZB695519 
+ISO27001 Certified 
+SOC2 Type 2 Compliance 
+Privacy Notice: Privacy Policy | 
+LaunchDarkly 
+Servers based in US
+DataDog
+Software as a 
+Service (SaaS)
+ICO Registration: 
+ISO27001 Certified 
+SOC2 Type 2 Compliance 
+Privacy Notice: Privacy Policy | 
+Datadog 
+Servers based in UK
+
+
+
+The Tortus app is intended to improve the efficiency and accuracy of existing tasks carried out by healthcare professionals, specifically the summarisation of consultations and production of letters following a consultation. 
+The use of the Tortus app is intended and expected to have a positive effect on data subjects by allowing clinicians to focus on the patient during consultations rather than on note taking. It is also expected to improve the speed, accuracy and completeness of consultation summarisation and letter production, freeing up clinician’s time and supporting the provision of safe and effective care. All outputs from Tortus app are intended to be reviewed for accuracy and completeness by clinicians, minimising the risk of any adverse impact on individuals. 
+The data processed within Tortus app is primarily sourced from conversations held during a clinical consultation. Clinicians are advised to ensure that the use of Tortus app is highlighted to data subjects at the start of a consultation. This approach will support fairness transparency requirements by ensuring the processing of their personal data via Tortus app remains in line with their reasonable expectations 
+Data controllers will remain responsible for upholding data subject rights. This will include: 
+● The right to be informed 
+● The right of access 
+● The right to rectification 
+● The right to erasure 
+● The right to restrict processing 
+Page 15 of 36
+
+● The right to data portability 
+● The right to object 
+● Rights related to automated decision-making including profiling 
+The table below outlines which data subject rights apply based on the lawful basis being relied upon: 
+RIGHT OF 
+THE DATA 
+SUBJECT
+BASIS OF LAWFUL PROCESSING
+6(1)a 
+CONSENT
+6(1)b 
+CONTRACT
+6(1)c 
+LEGAL 
+OBLIGATION
+6(1)d 
+VITAL 
+INTERESTS
+6(1)e 
+PUBLIC 
+INTEREST
+6(1)f 
+LEGITIMATE 
+INTEREST
+Withdraw 
+consent
+YES 
+NO 
+NO 
+NO 
+NO 
+NO
+Be informed 
+YES 
+YES 
+YES 
+YES 
+YES 
+YES
+Access 
+YES 
+YES 
+YES 
+YES 
+YES 
+YES
+Rectification 
+YES 
+YES 
+YES 
+YES 
+YES 
+YES
+Erasure 
+YES 
+NO 
+NO 
+NO 
+NO 
+YES
+Restrict 
+processing
+YES 
+YES 
+YES 
+YES 
+YES 
+YES
+Data 
+portability
+YES 
+YES 
+NO 
+NO 
+NO 
+NO
+Object 
+N/A 
+NO 
+NO 
+NO 
+YES 
+YES
+Automated decision 
+making and profiling
+N/A 
+NO 
+NO 
+YES 
+YES 
+YES
+
+
+
+In the case of data for which Tortus AI Ltd is a data processor, its data subject rights request procedures will allow Tortus AI Ltd to support the data controller’s ability to respond to data subject rights requests in line with legal requirements and timescales where necessary. 
+All data processed via the Tortus app is transferred to the primary patient record/EPR/EHR/clinical system to ensure that the data controller's existing data subject rights request procedures will apply directly to the data processed via the system. 
+Right to be informed (GDPR Articles 12, 13 and 14): 
+To ensure the right to be informed continues to be upheld, data controllers should ensure they have reviewed their main Privacy Notice as part of their adoption of Tortus app. This will ensure that data processing associated with the use of Tortus app is suitably covered to support the processing of personal, special category and confidential data in line with the reasonable expectations of data subjects. The primary purpose of Tortus app is to support the direct care of individual patients and is intended to support existing operational processes associated with note taking, summarisation and letter production for clinical consultations. It is therefore expected 
+Page 16 of 36
+
+that appropriate content will already exist within existing privacy notices, although data controllers may wish to make enhancements to these by making explicit reference to the use of technology and AI tools to support patient care. 
+Right of access (GDPR Article 15), right to rectification (GDPR Article 16), right to erasure (GDPR Article 17) and right to restrict processing (GDPR Article 18): 
+The Tortus app temporarily stores personal data locally on the user’s device but does not retain audio recordings, summarisations or other outputs beyond the current session with all data being deleted upon logout from the Tortus app. It is therefore expected that data controllers will require clinical users of Tortus app to copy all summarisations and letters generated via Tortus app into the primary Electronic Health Record (EHR) for the relevant patient. This will ensure the data can be retained by the data controller alongside other patient records and in accordance with the Records Management Code of Practice for Health and Social Care and any local record keeping/retention policies or procedures. Most importantly, this approach will also ensure that existing processes employed by the data controller for upholding the majority of data subject rights (access, rectification, erasure, restriction, portability and objections), will continue to apply to personal data processed via the Tortus app. 
+Right to data portability (GDPR Article 20): 
+The right to data portability is not expected to apply to the use of the Tortus app by NHS providers as this is only applicable where the lawful basis for processing is consent or contract. For other organisations which rely on contract as the lawful basis, existing processes are expected to apply where the outputs from the Tortus app are copied to the patient’s primary healthcare records. 
+Right to object (GDPR Article 21): 
+Each objection to the processing of personal data received will be assessed on a case-by-case basis and the decision approved by the relevant responsible individual such as the SIRO or the DPO. However, data subjects have the absolute right to object when their personal data is being processed for direct marketing purposes. This is not expected to apply in the context of the use of the Tortus app. 
+Rights related to automated decision-making and profiling (GDPR Article 22): 
+No profiling is anticipated under this data processing activity. A separate DPIA will be added If a project that involves profiling is to be undertaken. 
+Personal data shall be collected for specified, explicit and legitimate purposes and not further processed in a manner that is incompatible with those purposes (‘purpose limitation’) 
+The primary purpose of the Tortus app is to support the direct care of individual patients. It is intended to support existing operational processes associated with note-taking, 
+Page 17 of 36
+
+summarisation and letter production for clinical consultations. No personal data relating to patients is retained within the Tortus app and it is expected that data controllers will require clinical users of the Tortus app to copy all summarisations and letters generated via the system into the primary Electronic Health Record (EHR) for the relevant patient. This will ensure existing processes employed by data controllers for restricting further use of personal data can be applied to the personal data processed via the Tortus app. 
+Tortus AI Ltd employs a data protection by design and default approach to product development by ensuring this is incorporated into its Software Development Life Cycle (SDLC). This ensures any proposed changes are considered and assessed to ensure any impact on data protection or privacy can be appropriately managed. 
+Personal data shall be adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed (‘data minimisation’) 
+The Tortus app generates transcriptions from recordings of conversations between clinicians and patients during consultations. Although this results in the live capture of all audio during a consultation, this is necessary to ensure the completeness and accuracy of the resulting transcriptions, summarisations and letters. Audio recordings are initiated by the clinician during a consultation and can be paused and stopped if necessary to ensure that only relevant parts of the consultation are recorded and transcribed. 
+As an enhanced security and privacy measure, the Tortus app integrates with OpenAI under a zero data retention policy. This means that data processed via OpenAI’s API (e.g., for generation of summarised notes or letters) is not stored by OpenAI after processing, and is not used to train their models. This policy ensures that patient information is not retained by the third-party processor, and therefore supports data minimisation and the protection of patient confidentiality. 
+De-identification of transcription data is not required prior to processing via OpenAI due to this zero data retention assurance. 
+To ensure the accuracy of all transcriptions, summarisations and letters generated via the Tortus app, clinicians are required to review all outputs before they are saved into the clinical record. 
+Personal data shall be accurate and, where necessary, kept up to date; every reasonable step must be taken to ensure that personal data that are inaccurate, having regard to the purposes for which they are processed, are erased or rectified without delay (‘accuracy’) 
+The Tortus app generates transcriptions from recordings of conversations between clinicians and patients during consultations. The live capture of audio supports the completeness and accuracy of the resulting transcriptions. Data controllers should ensure that the hardware used to support the capture of audio (e.g. microphones) is of 
+sufficient quality and is appropriately located within clinical rooms to ensure the quality of audio capture. 
+Page 18 of 36
+
+Personal data shall be kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed (‘storage limitation’) 
+No personal data is retained within the Tortus app beyond the current session with all data being deleted upon logout from the Tortus app application. It is expected that data controllers will require clinical users of the Tortus app to copy all summarisations and letters generated via the system into the primary Electronic Health Record (EHR) for the relevant patient. This will ensure the data can be retained by the data controller in accordance with the Records Management Code of Practice for Health and Social Care and any local record-keeping/retention policies or procedures. 
+Personal data shall be processed in a manner that ensures appropriate security of the personal data, including protection against unauthorised or unlawful processing and against accidental loss, destruction or damage, using appropriate technical or organisational measures (‘integrity and confidentiality’). 
+Tortus AI Ltd can provide the following assurances to demonstrate that it has sufficient organisational and technical controls in place to adequately manage the risks to the rights and freedoms of data subjects to the data controller: 
+● The Tortus app is compliant with the NHS Digital Technology Assessment Criteria (DTAC). 
+● Tortus AI Ltd holds a current ICO registration: ZB512995. 
+● Tortus AI Ltd is not subject to any ICO fines or undertakings. 
+● Tortus AI Ltd holds an NHS Data Protection and Security Toolkit (DSPT) for the current year to ‘Standards Exceeded’ (ODS Code: O2G5U). 
+● The Tortus app has undergone penetration testing with all identified vulnerabilities addressed including Open Web Application Security Project (OWASP) Top 10 vulnerabilities. 
+● Tortus AI Ltd holds the Cyber Essentials Plus Certification. 
+Tortus AI Ltd applies a range of security measures within the Tortus app to ensure the security of data in transit: 
+● Data is securely transmitted between endpoints, Tortus app and other services (e.g. via HTTPS, WSS, SSL/TLS, etc.) 
+● Tortus AI Ltd undertakes regular (minimum yearly) penetration testing and ensures that ‘data in transit' is within scope. 
+The physical security implemented by data controllers to protect data 
+processed via local devices and networks is out of the scope of this DPIA. 
+Google Cloud, LaunchDarkly, Auth0 and datadog are all ISO27001 certified meaning the underlying infrastructure on which the Tortus app system is built is all ISO27001 certified. 
+The Tortus app can be accessed using a single-factor username (email address) and Page 19 of 36
+
+password. Data Controllers must nominate one or more Admin users who will then be responsible for managing all access to the Tortus app through the creation and deletion of accounts. All Admin accounts must be configured by Tortus AI Ltd on behalf of the data controller. 
+To ensure that the authentication of professional users of the system is in line with Gov.uk and NIST standards, the following assurances can be provided: 
+● User authentication to the Tortus App is either Single Sign On (SSO) as determined by the data controller or Multi-Factor Authentication (MFA). The MFA methodology used by the Tortus app follows the NHS England: multi-factor authentication (MFA) policy. This provides an additional layer of security. 
+● Passwords must be at least 12 characters long and must contain at least one uppercase, lowercase, number and symbol. 
+● The system hides passwords by default. 
+● All user accounts are subject to email verification before they are activated. ● The system gives professional users limited attempts (5) to enter their password correctly before locking their account for 15 minutes. 
+● If a professional user enters their account details incorrectly, the system conceals whether the username or password has been entered incorrectly. 
+● Passwords are stored salted and hashed, using algorithms and strengths recommended in NIST Cryptography Standards. 
+● Professional user passwords are not set to expire at a certain point and changes are only required when there has been actual or potential compromise. 
+● Professional users are able to change or reset their own passwords directly. ● The system is able to provide a view of access levels for all staff members at any one time. 
+Tortus AI Ltd personnel only access personal data in support of back-end administration. This may include incidental access to personal data relating to the data controller’s personnel or staff. Tortus AI Ltd personnel are unable to access any data relating to consultations such as transcriptions, summarisations or letters as these are not stored in the system. 
+The Tortus app enables and supports investigations for any reason (e.g. inappropriate access or cyber security incident). It allows for the identification of authorised users and the date and time of last access. 
+INTERNATIONAL TRANSFERS 
+All international transfers will only take place if it is compliant with the relevant legislation. When personal data is transferred outside of the country of origin, the appropriate technical and organisational safeguards will be in place. For example, if it is a transfer of data from the UK to Ireland (EU) then this would be covered under the adequacy decisions in place between the EU and the UK. Therefore, no additional 
+Page 20 of 36
+
+safeguards are required for data transfers between the UK and the EU as long as adequacy is in place.
+
+
+
+Step 5: Identify and assess risks
+
+
+
+● Risks in the red zone (extreme) must be mitigated. 
+● Risks in the orange zone (high) should be mitigated but may be tolerated by exception. 
+● Risks in the yellow and green zones may be mitigated further but can be reasonably tolerated. 
+
+Severity 
+Very high High 
+Medium Low 
+Very low 
+5 
+10 
+15 
+20 
+25
+4 
+3 
+8 
+6 
+12 
+9 
+16 
+12 
+20 
+15
+2 
+4 
+6 
+8 
+10
+1 
+2 
+3 
+4 
+5
+
+
+
+Rare Unlikely Possible Likely Almost Certain 
+Likelihood 
+
+
+Describe source of risk and nature of potential impact on individuals (inherent risk). Include associated compliance and corporate risks as necessary.
+Likelihood 
+of harm
+Severity of harm
+Overall 
+risk
+Illegitimate Access (Confidentiality) 
+Illegitimate access to the personal data could result in a breach of confidentiality and an associated breach of privacy law resulting in embarrassment to data subject, reputational damage to project stakeholders and enforcement action from the ICO.
+
+
+
+Data intercepted in transit within secure 
+infrastructureRare - 1 High - 4 Low - 4 Data shared with an unauthorised recipient Possible - 3 High - 4 High - 12 
+Data accessed as a result of phishing/malware 
+attacksRare - 1 High - 4 Low - 4 Page 21 of 36
+
+
+Data at rest accessed illegitimately 
+Rare - 1 
+High - 4 
+Low - 4
+Data inadvertently accessed due to the application of inappropriate access controls
+Possible - 3 
+High - 4 
+High - 12
+Data accessed inadvertently due to inappropriate disposal
+Possible - 3 
+High - 4 
+High - 12
+Data illegitimately processed by a data 
+sub-processor
+Unlikely - 2 
+High - 4
+Medium - 
+8
+Undesired Modification (Data Integrity) 
+Undesired modification of the personal data could result in a failure of the process, potentially resulting in a failure to utilise personal data effectively to support the identified purposes and reputational damage to project stakeholders.
+Data inaccurately captured during audio recording 
+Possible - 3 
+Low - 2
+Medium - 
+6
+Transcription process could result in undesired modification of data
+Possible - 3 
+High - 4 
+High - 12
+Data modified as a result of phishing/malware attacks
+Rare - 1 
+High - 4 
+Low - 4
+Data being unintentionally modified by authorised users
+Rare - 1 
+High - 4 
+Low - 4
+Data being maliciously modified by authorised users 
+Rare - 1 
+High - 4 
+Low - 4
+Data being maliciously modified by unauthorised users
+Rare - 1 
+High - 4 
+Low - 4
+Disappearance of Data (Availability) 
+Disappearance of the personal data could potentially lead to a failure to utilise personal data effectively to support the identified purposes and reputational damage to project stakeholders. It could also impact the ability of project stakeholders to comply with legal
+
+
+
+Page 22 of 36
+
+requirements around record retention and accountability, or to defend themselves against legal claims brought against them.
+Transcription process failure leads to loss of data 
+Possible - 3 
+High - 4 
+High - 12
+Data being unintentionally overwritten or deleted by authorised users
+Possible - 3 
+High - 4 
+High - 12
+Data being maliciously overwritten or deleted by authorised users
+Rare - 1 
+High - 4 
+Low - 4
+Data being maliciously overwritten or deleted by unauthorised users
+Rare - 1 
+High - 4 
+Low - 4
+Loss of data due to database/hardware/cloud provider failure
+Rare - 1 
+High - 4 
+Low - 4
+Data lost through disruption to services 
+Rare - 1 
+High - 4 
+Low - 4
+Compliance 
+An inability to fully comply with the law could result in a failure to uphold the fundamental rights and freedoms of data subjects leading to complaints from data subjects, reputational damage to project stakeholders and enforcement action from the ICO.
+Tortus AI has stated it will use artificial intelligence (Large Language Models (LLMs)) in the provision of its services. Lack of controls in place to facilitate the use of AI.
+Unlikely - 2 
+High - 4
+Medium - 
+8
+Transferring data outside the UK without the appropriate safeguards in place.
+Unlikely - 2 
+High - 4
+Medium - 
+8
+Failure to identify and uphold data subject rights requests submitted by data subjects
+Unlikely - 2 
+High - 4
+Medium - 
+8
+Failure to notify the data controller of any data subject rights requests from data subjects
+Unlikely - 2 
+High - 4
+Medium - 
+8
+
+
+
+Page 23 of 36
+
+Failure to implement effective technical and organisational measures to suitably protect personal data and ensure lawfulness of processing and sharing
+Unlikely - 2 
+High - 4
+Medium - 
+8
+Failure to demonstrate accountability 
+Rare - 1 
+High - 4 
+Low - 4
+Failure to appropriately/lawfully engage data sub-processors
+Rare - 1 
+High - 4 
+Low - 4
+Unlawful reuse of service user’s personal data 
+Rare - 1 
+High - 4 
+Low - 4
+
+
+
+
+
+
+
+
+Step 6: Identify measures to reduce risk
+
+
+
+Identify measures to reduce or eliminate risks identified as medium or high risk in step 5
+Risk Existing controls to 
+Options to 
+Effect on 
+Residual 
+Measure 
+reduce or eliminate 
+further reduce 
+risk 
+risk 
+approved 
+risk 
+or eliminate risk 
+(Eliminated 
+(Low 
+(Yes/no) 
+reduced 
+medium 
+accepted) 
+high) 
+Illegitimate Access (Confidentiality)
+
+
+
+It is the 
+
+Data shared with an unauthorised 
+recipient 
+Data inadvertently accessed due to the application of 
+The appropriate technical and 
+organisational 
+measures including appropriate access controls are in place 
+as evidenced in Appendix 2. 
+The appropriate technical and 
+organisational 
+responsibility of the data 
+controller to ensure the 
+appropriate access controls are in place when using the Tortus app. 
+It is the 
+responsibility of the data 
+Reduced Low Yes 
+Reduced Low Yes Page 24 of 36
+
+
+inappropriate access controls
+measures including appropriate access controls are in place as evidenced in 
+Appendix 2.
+controller to 
+ensure the 
+appropriate 
+access controls are in place 
+when using the Tortus app.
+
+
+
+
+
+
+Data accessed 
+inadvertently due to inappropriate 
+disposal
+The appropriate 
+technical and 
+organisational 
+measures including appropriate access controls are in place as evidenced in 
+Appendix 2.
+It is the 
+responsibility of the data 
+controller to 
+ensure 
+authorised 
+users of the 
+Tortus app 
+receive 
+appropriate 
+training on the use of the Tortus app.
+Reduced 
+Low 
+Yes
+Data illegitimately processed by a data sub-processor
+Tortus AI has data 
+processing 
+agreements (DPA) in place with all of its sub-processors in 
+compliance with 
+Article 28 of the UK GDPR.
+
+
+Reduced 
+Low 
+Yes
+Undesired Modification (Data Integrity)
+Data inaccurately captured during 
+audio recording
+The appropriate 
+technical and 
+organisational 
+measures including appropriate access controls are in place as evidenced in 
+Appendix 2.
+It is the 
+responsibility of the data 
+controller to 
+ensure 
+authorised 
+users of the 
+Tortus app 
+receive 
+appropriate
+Reduced 
+Low 
+Yes
+
+
+
+Page 25 of 36
+
+
+
+
+
+training on the use of the Tortus app.
+
+
+
+
+
+
+Transcription process could result in 
+undesired 
+modification of data
+The appropriate 
+technical and 
+organisational 
+measures including appropriate access controls are in place as evidenced in 
+Appendix 2.
+It is the 
+responsibility of the data 
+controller to 
+ensure 
+authorised 
+users of the 
+Tortus app 
+receive 
+appropriate 
+training on the use of the Tortus app.
+Reduced 
+Low 
+Yes
+Disappearance of Data (Availability)
+Transcription process failure leads to loss of data
+The appropriate 
+technical and 
+organisational 
+measures including appropriate access controls are in place as evidenced in 
+Appendix 2.
+It is the 
+responsibility of the data 
+controller to 
+ensure 
+authorised 
+users of the 
+Tortus app 
+receive 
+appropriate 
+training on the use of the Tortus app.
+Reduced 
+Low 
+Yes
+Data being 
+unintentionally 
+overwritten or 
+deleted by 
+authorised users
+The appropriate 
+technical and 
+organisational 
+measures including appropriate access controls are in place as evidenced in 
+Appendix 2.
+It is the 
+responsibility of the data 
+controller to 
+ensure 
+authorised 
+users of the 
+Tortus app 
+receive
+Reduced 
+Low 
+Yes
+
+
+
+Page 26 of 36
+
+
+
+
+
+appropriate 
+training on the use of the Tortus app.
+
+
+
+
+
+
+Compliance
+Tortus AI has stated it will use artificial 
+intelligence (Large Language Models (LLMs) in the 
+provision of its 
+services. Lack of 
+controls in place to facilitate the use of AI.
+Tortus AI uses 
+industry-standard methods of AI which have already been approved as being safe. The use of 
+artificial intelligence is regularly reviewed to determine whether it meets the updated Guidance on AI and Data Protection by the ICO. The use of AI will be supported by the relevant policies and procedures.
+
+
+Reduced 
+Low 
+Yes
+Transferring data 
+outside the UK 
+without the 
+appropriate 
+safeguards in place.
+Tortus AI Ltd will 
+ensure that any 
+transfers of data 
+outside the UK 
+(international 
+transfers) will only 
+take place if it is 
+compliant with the relevant legislation. For example, when 
+Tortus transfers data to Ireland (Open AI’s data centres) this is covered by the 
+adequacy decision between the EU and the UK.
+
+
+Reduced 
+Low 
+Yes
+Failure to identify and uphold data subject rights requests
+Tortus AI historically has not received any
+It is the 
+responsibility of
+Reduced 
+Low 
+Yes
+
+
+
+Page 27 of 36
+
+submitted by data subjects
+data subject rights requests. However, it has the appropriate policies and 
+procedures in place including the 
+provision of an email address 
+compliance@tortus.ai to allow users to 
+exercise their rights.
+the data 
+controller to 
+have the 
+appropriate 
+training and 
+procedures in place to uphold data subject 
+rights requests.
+
+
+
+
+
+
+Failure to notify the data controller of any data subject rights requests from data subjects
+Tortus AI has the 
+appropriate training and procedures in place to ensure the data controller will be notified of any 
+relevant requests as supported by 
+Appendix 2.
+
+
+Reduced 
+Low 
+Yes
+Failure to implement effective technical and organisational measures to suitably protect personal 
+data and ensure the lawfulness of 
+processing and 
+sharing
+The appropriate 
+technical and 
+organisational 
+measures are in 
+place as evidenced in Appendix 2.
+
+
+Reduced 
+Low 
+Yes
+
+
+
+Page 28 of 36
+Step 7: Sign off and record outcomes
+
+
+
+Item 
+Name/position/date 
+Notes
+Measures approved 
+by:
+Nikita Adatia 
+Regulatory Affairs Lead Tortus AI Ltd 
+13/02/2025
+Integrate actions back into the project plan, with the target date and responsibility for completion
+Residual risks 
+approved by:
+Nikita Adatia 
+Regulatory Affairs Lead Tortus AI Ltd 
+13/02/2025
+If accepting any residual high risk, consult the ICO before going ahead
+DPO advice 
+provided:
+8foldGovernance Ltd. on 
+behalf of Tortus AI Ltd 
+13/02/2025
+DPO should advise on 
+compliance, step 6 measures and whether processing can proceed
+Summary of DPO advice: 
+The supplier due diligence has been completed on the relevant sub-processors. All identified risks have been mitigated to an acceptable level or have been appropriately transferred to the relevant data controller to manage. Residual risks and identified actions which are relevant to Data Controllers should be highlighted during implementation/rollout.
+DPO advice accepted or overruled by:
+Nikita Adatia 
+Regulatory Affairs Lead Tortus AI Ltd
+If overruled, you must explain your reasons
+Comments:
+Consultation responses reviewed by:
+Nikita Adatia 
+Regulatory Affairs Lead Tortus AI Ltd
+If your decision departs from individuals’ views, you must explain your reasons
+Comments:
+This DPIA will kept under review by:
+Nikita Adatia - Regulatory Affairs Lead Tortus AI Ltd and Data Protection Officer (DPO) - 8foldGovernance Ltd
+The DPO should also review ongoing compliance with this DPIA
+
+
+
+Page 29 of 36
+Appendix 1 – DPIA Screening Assessment 
+European Guidelines Criteria for Mandatory Data Protection Impact Assessment 
+Applies
+Evaluation or scoring, including profiling and predicting, especially from “aspects concerning the data subject's performance at work, economic situation, health, personal preferences or interests, reliability or behaviour, location or movements” (Recitals 71 and 91). Examples of this could include a financial institution that screens its customers against a credit reference database or against an anti-money laundering and counter-terrorist financing (AML/CTF) or fraud database, or a biotechnology company offering genetic tests directly to consumers in order to assess and predict the disease/health risks, or a company building behavioural or marketing profiles based on usage or navigation on its website.
+NO
+Automated-decision making with legal or similar significant effect: processing that aims at making decisions on data subjects producing “legal effects concerning the natural person” or which “similarly significantly affects the natural person” (Article 35(3)(a)). For example, the processing may lead to the exclusion or discrimination against individuals. Processing with little or no effect on individuals does not match this specific criterion. 
+Systematic monitoring: processing used to observe, monitor or control data subjects, including data collected through networks or “a systematic monitoring of a publicly accessible area” (Article 35(3)(c)). This type of monitoring is a criterion because personal data may be collected in circumstances where data subjects may not be aware of who is collecting their data and how they will be used. Additionally, it may be impossible for individuals to avoid being subject to such processing in public (or publicly accessible) space(s).
+NO 
+NO
+Sensitive data or data of a highly personal nature: this includes special categories of personal data as defined in Article 9 (for example information about individuals’ political opinions), as well as personal data relating to criminal convictions or offences as defined in Article 10. An example would be a general hospital keeping patients’ medical records or a private investigator keeping offenders’ details. Beyond these provisions of the GDPR, some categories of data can be considered as increasing the possible risk to the rights and freedoms of individuals. These personal data are considered sensitive (as this term is commonly understood) because they are linked to household and private activities (such as electronic communications whose confidentiality should be protected), or because they impact the exercise of a fundamental right (such as location data whose collection questions the freedom of movement) or because their violation clearly
+YES
+
+
+
+Page 30 of 36
+involves serious impacts in the data subject’s daily life (such as financial data that might be used for payment fraud). In this regard, whether the data has already been made publicly available by the data subject or by third parties may be relevant. The fact that personal data is publicly available may be considered a factor in the assessment if the data is expected to be further used for certain purposes. This criterion may also include data such as personal documents, emails, diaries, notes from e-readers equipped with note-taking features, and very personal information contained in life-logging applications.
+
+
+Data processed on a large scale: the GDPR does not define what constitutes large-scale, though Recital 91 provides some guidance. In any event, the WP29 recommends that the following factors, in particular, be considered when determining whether the processing is carried out on a large scale: 
+a) the number of data subjects concerned, either as a specific number or as a proportion of the relevant population; 
+b) the volume of data and/or the range of different data items being processed; 
+c) the duration, or permanence, of the data processing activity; d) the geographical extent of the processing activity.
+YES
+Matching or combining datasets, for example, originating from two or more data processing operations performed for different purposes and/or by different data controllers in a way that would exceed the reasonable expectations of the data subject.
+NO
+Data concerning vulnerable data subjects (Recital 75): the processing of this type of data is a criterion because of the increased power imbalance between the data subjects and the data controller, meaning the individuals may be unable to easily consent to, or oppose, the processing of their data, or exercise their rights. Vulnerable data subjects may include children (they can be considered as not able to knowingly and thoughtfully oppose or consent to the processing of their data), employees, more vulnerable segments of the population requiring special protection (mentally ill persons, asylum seekers, or the elderly, patients, etc.), and in any case where an imbalance in the relationship between the position of the data subject and the controller can be identified.
+YES
+Innovative use or applying new technological or organisational solutions, like combining the use of fingerprint and face recognition for improved physical access control, etc. The GDPR makes it clear (Article 35(1) and recitals 89 and 91) that the use of a new technology, defined in “accordance with the achieved state of technological knowledge” (recital 91), can trigger the need to carry out a DPIA. This is because the use of such technology can involve novel forms of data collection and usage, possibly with a high risk to individuals’ rights and freedoms. Indeed, the personal and social consequences of the deployment of a new
+YES
+
+
+
+Page 31 of 36
+technology may be unknown. A DPIA will help the data controller to understand and to treat such risks. For example, certain “Internet of Things” applications could have a significant impact on individuals’ daily lives and privacy; and therefore require a DPIA.
+
+
+When the processing in itself “prevents data subjects from exercising a right or using a service or a contract” (Article 22 and Recital 91). This includes processing operations that aim at allowing, modifying or refusing data subjects’ access to a service or entry into a contract. An example of this is when a bank screens its customers against a credit reference database in order to decide whether to offer them a loan.
+NO
+ICO Additional Criteria for Mandatory Data Protection Impact Assessment 
+Applies
+Use of systematic and extensive profiling with significant effects. 
+NO
+Processing of special category or criminal offence data on a large scale. 
+YES
+Systematic monitoring of publicly accessible places on a large scale. 
+NO
+Use innovative technology (in combination with any of the criteria from the European guidelines).
+YES
+Use of profiling or special category data to decide on access to services. Profiling of individuals on a large scale. 
+NO 
+NO
+Processing of biometric data (in combination with any of the criteria from the European guidelines).
+YES
+Processing of genetic data (in combination with any of the criteria from the European guidelines).
+NO
+Matching of data or combining datasets from different sources. 
+NO
+Collection of personal data from a source other than the individual without providing them with a privacy notice (‘invisible processing’) (in combination with any of the criteria from the European guidelines).
+NO
+Tracking of individuals’ location or behaviour (in combination with any of the criteria from the European guidelines).
+NO
+Profiling of children or targeting marketing or online services at them. 
+NO
+Processing of data that might endanger the individual’s physical health or safety in the event of a security breach.
+YES
+
+
+
+Page 32 of 36
+Appendix 2 – Technical and Organisational Measures 
+Organisational Controls 
+Type of Control – examples 
+Description
+Information security and related policy(ies)
+Tortus AI Ltd has the appropriate information security controls in place as supported by the applicable policies and procedures in place. 
+● All laptops and workstations are password-protected, third-party storage devices are restricted and may only be used following approval and virus control. 
+● Protection against malicious software is provided regarding all of the systems and system elements of the Service Provider. 
+● When allocating authorisations to IT systems, we pay close attention to the protection of data (e.g. 
+passwords, authorisations) affecting these systems. The appropriate password management systems and guidelines are in place. 
+● All electronically forwarded messages and files e.g. Google or Microsoft Integrations use the appropriate security measures such as SSL/TLS 1.2 encryption. 
+● During the planning, development and operation of programs, applications and tools, Tortus AI Ltd 
+addresses security functions separately and with emphasis. 
+● Tortus AI Ltd’s IT systems are regularly tested to ensure and maintain data and IT security. 
+● Tortus AI Ltd business records, information and data assets are stored on a secure database within a secure cloud storage environment, access to which is strictly controlled with the appropriate encryption and password protection in place. 
+● The protection we use detects illegal intrusions, modifications and inclusion. We prevent data loss and damage by fault detecting and correcting 
+procedures and we ensure the prevention of 
+deniability. 
+● Regarding the network used for data transmission, we provide defence against illegal connection and eavesdropping per an adequate security level.
+
+
+
+Page 33 of 36
+Type of Control – examples 
+Description
+Staff training 
+Staff receive the training applicable to their role during induction and as required going forward.
+Adverse event reporting and management
+Pursuant to applicable law, we report incidents to the supervisory authority within 72 hours of having gained knowledge thereof, and we also keep records of them.
+Physical access and 
+authorisation controls
+Physical access: Not applicable as Tortus AI Ltd business records, information and data assets are held in secure cloud storage. 
+Authorisation controls: Approved staff operate remotely, access company assets, and secure their workplace in line with the appropriate policy/procedure.
+Environmental controls 
+Not applicable as all information assets are held in secure cloud storage.
+Information asset 
+management including 
+management of backups and asset disposal
+Information assets are classified in line with the appropriate policy/procedure. Backups are held in secure cloud storage and retained in line with business and client needs.
+Business continuity 
+Tortus AI Ltd has a Business Continuity Plan in place in line with the NHS Data Security and Protection Toolkit (DSPT)’s requirements. 
+Tortus AI Ltd also has component-level disaster recovery in place with Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO), these are routinely tested. 
+Our BCP defines our critical business risks and our risk assessment process alongside organisational 
+accountabilities.
+
+
+
+Technical Controls 
+Type of Control – examples 
+Description
+System access levels and user authentication controls
+● The appropriate access controls are in place within Tortus AI Ltd. Password complexity is defined in the appropriate policy/procedure and used in line with password management best practices. 
+● The appropriate user authentication is in place. Access to the Tortus App is provided either through the data controller’s SSO or MFA.
+
+
+
+Page 34 of 36
+Type of Control – examples 
+Description
+Two-factor Authentication (2FA) and/or Multi-factor Authentication (MFA)
+Multi-factor authentication (MFA) is required for all Tortus AI Ltd staff accessing the production environments outside whitelisted/trusted environments that are accessed through SSH.
+System auditing functionality and procedures
+The Tortus app enables and supports investigations for any reason (e.g. inappropriate access or cyber security incident). It allows for the identification of authorised users and the date and time of last access.
+Operating system controls such as vulnerability scanning and anti-virus/anti-malware software
+Tortus AI Ltd has the appropriate operating system controls in place such as vulnerability scanning and 
+anti-virus/anti-malware software.
+Network security such as firewalls and penetration testing
+The appropriate network security controls are in place. Firewalls are in place together with additional access controls. Annual penetration and vulnerability scanning is executed by an external accredited supplier.
+Encryption of special category personal data
+All patient data is fully encrypted in transit (TLS 1.2) and at rest (AES 256 Encryption). All data is held on 
+hardware-encrypted media.
+Cyber Essentials compliance (if applicable)
+Tortus AI Ltd has active Cyber Essentials and Cyber Essentials Plus Certifications.
+
+
+
+
+Details of ISO 27001/02 accreditation and scope (if applicable) 
+Tortus AI Ltd uses ISO27001-accredited infrastructure platforms and is currently working on attaining its ISO 27001 accreditation which will cover the whole organisation. 
+Page 35 of 36
